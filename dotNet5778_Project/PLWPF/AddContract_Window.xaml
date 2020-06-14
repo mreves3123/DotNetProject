@@ -1,0 +1,106 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddContract_Window"
+        mc:Ignorable="d"
+        Title="AddContract_Window"  Height="570" Width="600" >
+    <Window.Resources>
+        <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
+
+        <Style x:Key="controlStyle" TargetType="Control">
+
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+
+        <LinearGradientBrush x:Key="MyButtonBackground" EndPoint="0.504,1.5" StartPoint="0.504,0.03" >
+            <GradientStop Offset="0" Color="#FFFFF093"/>
+            <GradientStop Color="#FFFFFFFF" Offset="0.567"/>
+        </LinearGradientBrush>
+        <Style  TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFFFFFC8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*" />
+            <RowDefinition Height="431*"/>
+            <RowDefinition Height="72*" />
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Add New Contract"  
+			FontSize="25" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="266" Height="39" Margin="188,-4,138,1"/>
+        <ScrollViewer Grid.Row="1" HorizontalAlignment="Center">
+
+            <Grid x:Name="grid1" DataContext="{StaticResource contractViewSource}" Grid.Row="1" Width="578" Height="463" HorizontalAlignment="Center">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="220"/>
+                    <ColumnDefinition Width="Auto" MinWidth="362"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="According Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="4" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <CheckBox x:Name="accordingHourCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding AccordingHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,0,0,9" Grid.Row="4" VerticalAlignment="Bottom" Height="16" Width="20" Click="accordingHourCheckBox_Click" />
+                <Label Content="According Mounth:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="6" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <CheckBox x:Name="accordingMounthCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding AccordingMounth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="6,12,0,11" Grid.Row="6" VerticalAlignment="Center" Height="16" Width="20" Click="accordingMounthCheckBox_Click"/>
+                <Label Content="Date Of Signing:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="12" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <DatePicker x:Name="dateOfSigningDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,0,4" Grid.Row="12" SelectedDate="{Binding DateOfSigning, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="24" Width="347" IsEnabled="{Binding ElementName=singningCheckBox, Path=IsChecked, Mode=OneWay}"/>
+                <Label Content="End Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="3" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <DatePicker x:Name="endDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,0,4" Grid.Row="3" SelectedDate="{Binding EndDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="24" Width="347"/>
+                <Label Content="How To Pay:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="9" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <ComboBox x:Name="howToPayComboBox" Grid.Column="1" Margin="3,5,14,5" Grid.Row="9" SelectedItem="{Binding howToPay}" />
+
+                <Label Content="Id Child:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <ComboBox x:Name="idChildComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,7" Grid.Row="0" VerticalAlignment="Center" Width="346" Text="{Binding IdChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                <Label Content="Id Nanny:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,5,0,5" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="71"/>
+                <ComboBox x:Name= "idNannyComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,7" Grid.Row="1" VerticalAlignment="Center" Width="346" Text="{Binding IdNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                <Label Content="Meeting:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,3" Grid.Row="10" VerticalAlignment="Bottom" Height="auto" Width="auto"/>
+                <CheckBox x:Name="meetingCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Meeting, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,8" Grid.Row="10" VerticalAlignment="Center" Height="16" Width="20"/>
+                <Label Content="Mounth Salary:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="7" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <TextBox x:Name="mounthSalaryTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="7" Text="{Binding MounthSalary, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="347" IsEnabled="{Binding ElementName=accordingMounthCheckBox, Path=IsChecked, Mode=OneWay}"/>
+                <Label Content="Num Hours In Week:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,3" Grid.Row="8" VerticalAlignment="Bottom" Height="auto" Width="auto"/>
+                <TextBox x:Name="numHoursInWeekTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="8" Text="{Binding NumHoursInWeek, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="347"/>
+                <Label Content="Salary Per Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="5" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <TextBox x:Name="salaryPerHourTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="5" Text="{Binding SalaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="347" IsEnabled="{Binding ElementName=accordingHourCheckBox, Path=IsChecked, Mode=OneWay}"/>
+                <Label Content="Singning:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="11" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <CheckBox x:Name="singningCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Singning, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,8" Grid.Row="11" VerticalAlignment="Center" Height="16" Width="20"/>
+                <Label Content="Starting Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center" Height="auto" Width="auto"/>
+                <DatePicker x:Name="startingDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,0,4" Grid.Row="2" SelectedDate="{Binding StartingDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="24" Width="347"/>
+
+            </Grid>
+        </ScrollViewer>
+
+        <Grid  Height="64" Grid.Row="2" VerticalAlignment="Top" Width="auto" RenderTransformOrigin="0.412,0.483">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="addButton" Content="Add" 
+                FontSize="30" Margin="10" Grid.Column="1" Click="addButton_Click"   Background="{StaticResource MyButtonBackground}" />
+            <Button x:Name="Return_button" Content="Return " Width="auto" Height="auto" Margin="10" FontSize="15" Click="Return_button_Click"  Background="{StaticResource MyButtonBackground}"  />
+            <Button x:Name="Main_button" Content="Main Menu" Width="auto" Height="auto" Grid.Column="2" Margin="8,10,10,10" FontSize="15" Click="Main_button_Click"   Background="{StaticResource MyButtonBackground}"  />
+        </Grid>
+    </Grid>
+</Window>

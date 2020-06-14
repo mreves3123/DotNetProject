@@ -1,0 +1,58 @@
+﻿<Window x:Class="PLWPF.Nanny"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="Nanny" Height="300" Width="300">
+
+    <Window.Resources>
+        <Style x:Key="controlStyle" TargetType="Control">
+
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+        <Style TargetType="Label">
+
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+
+        <LinearGradientBrush x:Key="MyButtonBackground" EndPoint="0.504,1.5" StartPoint="0.504,0.03" >
+            <GradientStop Offset="0" Color="#FFFF6CDE"/>
+            <GradientStop Color="#FFFFC3DE" Offset="0.567"/>
+        </LinearGradientBrush>
+        <!--FFF9C3E0-->
+    </Window.Resources>
+    <Grid Background="#FFF9C3E0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Button x:Name="AddNanny_button" Content="Add Nanny" Height="auto" Margin="45,10,50,10"  Width="197" FontSize="25" Click="AddNanny_button_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}"/>
+        <Button x:Name="UpDateNanny_button" Content="UpDate Nanny"  Margin="45,10,50,10" Width="197" Grid.Row="2" FontSize="25" Click="UpDateNanny_button_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}"/>
+        <Button x:Name="DeleteNanny_button" Content="Delete Nanny"  Margin="45,10,50,10" Width="197" Grid.Row="1" FontSize="25" Click="DeleteNanny_button_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}"/>
+        <Button x:Name="AnotherFunction_button" Content="Another Function" Margin="10"  Width="auto" Grid.Row="3" FontSize="25" Click="AnotherFunction_button_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}"/>
+        <Grid Height="auto" Grid.Row="4" Width="auto" Margin="0,0,0,1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Return_button" Content="Return " Width="74" Height="auto" Margin="33,10,39,10" FontSize="15" Click="Return_button_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}" RenderTransformOrigin="0.767,0.577"/>
+
+            <Button x:Name="Main_button" Content="Main Menu" Width="auto" Height="auto" Grid.Column="1" Margin="10" FontSize="15" Click="Menu_button_Copy_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}" />
+            
+        </Grid>
+    </Grid>
+</Window>

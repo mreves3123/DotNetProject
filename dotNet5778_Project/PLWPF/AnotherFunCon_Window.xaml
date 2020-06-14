@@ -1,0 +1,68 @@
+﻿<Window x:Class="PLWPF.AnotherFunCon_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="AnotherFunCon" Height="500" Width="400">
+    <Window.Resources>
+        <Style x:Key="controlStyle" TargetType="Control">
+
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+        <Style  TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <LinearGradientBrush x:Key="MyButtonBackground" EndPoint="0.504,1.5" StartPoint="0.504,0.03" >
+            <GradientStop Offset="0" Color="#FFFFF093"/>
+            <GradientStop Color="#FFFFFFFF" Offset="0.567"/>
+        </LinearGradientBrush>
+
+    </Window.Resources>
+    <Grid x:Name="hizoni" Background="#FFFFFFC8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="132*"/>
+            <RowDefinition Height="231*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="223*"/>
+                <ColumnDefinition Width="169*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="NumContract_comboBox" HorizontalAlignment="Left" Margin="14,4,0,0" VerticalAlignment="Top" Width="149" Grid.Row="0" Grid.Column="1" Text="{Binding GetAllContracts(), Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" SelectionChanged="NumContract_comboBox_SelectionChanged" >
+            </ComboBox>
+
+            <Label x:Name="NumContract_textBox" HorizontalAlignment="Left" Height="27" Content="Get contract according identity number:" VerticalAlignment="Top" Width="218" Margin="0,5,0,0" Grid.Row="0"/>
+            <Button x:Name="listContracts_button" Content="List of contacts" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="382" Grid.Row="1" Grid.ColumnSpan="2" Margin="4,1,0,0" Click="listContracts_button_Click" Background="{StaticResource MyButtonBackground}"  Style="{StaticResource controlStyle}"/>
+            <Button x:Name="NumExistCon_button" Content="Number of exists contracts:" HorizontalAlignment="Left" Margin="4,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="209" Click="NumExistCon_button_Click" Background="{StaticResource MyButtonBackground}"  Style="{StaticResource controlStyle}"/>
+            <TextBox x:Name="numContract" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,4,0,0" Grid.Row="2" TextWrapping="Wrap"  IsEnabled="False" VerticalAlignment="Top" Width="159"/>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Height="auto" Grid.Row="3" Width="392">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Return_button" Content="Return" Grid.Column="0"  Width="125" Height="auto" Margin="28,10,43,10" FontSize="25" Click="Return_button_Click" Background="{StaticResource MyButtonBackground}"  Style="{StaticResource controlStyle}" />
+            <Button x:Name="Main_button" Content="Main Menu"  Grid.Column="1" Width="auto" Height="auto" Margin="10" Click="Main_button_Click" FontSize="25" Background="{StaticResource MyButtonBackground}"   Style="{StaticResource controlStyle}"/>
+        </Grid>
+        <Label x:Name="textBox" HorizontalAlignment="Center" Height="41" Margin="110,4,87,0"  VerticalAlignment="Center" Width="195" Content="Extra Function" FontSize="20"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Center" Height="216" Margin="92,10,92,0" Grid.Row="2" VerticalAlignment="Top" Width="208"/>
+
+
+    </Grid>
+
+</Window>

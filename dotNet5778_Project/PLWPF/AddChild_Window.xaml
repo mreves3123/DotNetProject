@@ -1,0 +1,110 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE"
+        x:Class="PLWPF.AddChild"
+        mc:Ignorable="d"
+        Title="AddChild" Height="500" Width="600" FontSize="12" >
+
+    <Window.Resources>
+        <CollectionViewSource x:Key="childViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Child}, CreateList=True}"/>
+
+        <Style x:Key="controlStyle" TargetType="Control">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="7,6,0,0"/>
+        </Style>
+        <LinearGradientBrush x:Key="MyButtonBackground" EndPoint="0.504,1.5" StartPoint="0.504,0.03" >
+            <GradientStop Offset="0" Color="#FF00C1C1"/>
+            <GradientStop Color="Aquamarine" Offset="0.567"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Grid  Background="#FFC3F0E9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto" MinHeight="68"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Add New Child"  
+			FontSize="30" Margin="192,7,129,8" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="271" Height="50"/>
+        <ScrollViewer Grid.Row="1" >
+            <Grid x:Name="grid1"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="582" Height="610" Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="242"/>
+                    <ColumnDefinition Width="Auto" MinWidth="225"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Label Content="Birth:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center" Height="31" Width="47"/>
+                <DatePicker x:Name="birthDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,-91,4" Grid.Row="2" SelectedDate="{Binding Birth, Mode=TwoWay}" VerticalAlignment="Center" Height="29" Width="316"/>
+                <Label Content="Child Gender:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center" Height="31" Width="106"/>
+                <ComboBox x:Name="childGenderComboBox" Grid.Column="1"  SelectedItem="{Binding childGenderComboBox,Mode=TwoWay}" Grid.Row="3" Margin="3,0,-1,0" />
+                <Label Content="Elergy:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="10" VerticalAlignment="Center" Height="31" Width="57"/>
+                <TextBox x:Name="elergyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,7,-89,7" Grid.Row="10" Text="{Binding Elergy, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="316"/>
+                <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Height="31" Width="27" RenderTransformOrigin="-0.241,0.5"/>
+                <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="5,10,0,10" Grid.Row="1" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="313" RenderTransformOrigin="0.759,0.125"/>
+                <Label Content="Is Diaper:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="6" VerticalAlignment="Center" Height="31" Width="75"/>
+                <CheckBox x:Name="isDiaperCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding IsDiaper, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,9" Grid.Row="6" VerticalAlignment="Center" Height="20" Width="20"/>
+                <Label Content="Is Speciel Need:" Grid.Column="0" HorizontalAlignment="Left"   Grid.Row="7" VerticalAlignment="Center" Height="31" Width="121"/>
+                <CheckBox x:Name="isSpecielNeedCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding IsSpecielNeed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,9,0,8" Grid.Row="7" VerticalAlignment="Center" Height="20" Width="20"/>
+                <Label Content="Know To Walk:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" Height="31" Width="112"/>
+                <CheckBox x:Name="knowToWalkCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding KnowToWalk, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,8,0,9" Grid.Row="8" VerticalAlignment="Center" Height="20" Width="20"/>
+                <Label Content="Liked Food:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center" Height="31" Width="91"/>
+                <TextBox x:Name="likedFoodTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,7,-87,7" Grid.Row="9" Text="{Binding LikedFood, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="316"/>
+                <Label Content="Mother Id:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Center" Height="31" Width="84"/>
+                <TextBox x:Name="motherIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,7,-86,7" Grid.Row="4" Text="{Binding MotherId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="316"/>
+                <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="0" VerticalAlignment="Top" Height="32" Width="56"/>
+                <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,16,-67,6" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="316"/>
+                <Label Content="Num Sleep Hours:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="12" VerticalAlignment="Center" Height="32" Width="138"/>
+                <TextBox x:Name="numSleepHoursTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,7,-84,7" Grid.Row="12" Text="{Binding NumSleepHours, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="316"/>
+                <Label Content="pacifier:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Height="31" Width="65"/>
+                <CheckBox x:Name="pacifierCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding pacifier, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,9,0,8" Grid.Row="5" VerticalAlignment="Center" Height="20" Width="20"/>
+                <Label Content="Plays:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="13" VerticalAlignment="Center" Height="31" Width="49"/>
+                <TextBox x:Name="playsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,9,-70,14" Grid.Row="13" Text="{Binding Plays, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="313"/>
+                <Label Content="Speciel Need:" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="11" VerticalAlignment="Center" Height="31" Width="106"/>
+                <TextBox x:Name="specielNeedTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,7,-82,7" Grid.Row="11" Text="{Binding SpecielNeed, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="316" IsEnabled="{Binding ElementName=isSpecielNeedCheckBox, Path=IsChecked, Mode=OneWay}"/>
+
+            </Grid>
+        </ScrollViewer>
+        <Grid  Height="auto" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="auto" RenderTransformOrigin="0.412,0.483">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="addButton" Content="Add" 
+                FontSize="30" Click="addButton_Click" Margin="62,10,69,10" Grid.Column="1"  Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}" Width="224" />
+            <Button x:Name="Return_button" Content="Return " Width="79" Height="45" Margin="29,0,10,10" FontSize="15" Click="button_Click" Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}" MouseEnter="Return_button_MouseEnter" VerticalAlignment="Bottom" />
+            <Button x:Name="Main_button" Content="Main Menu" Width="auto" Height="auto" Grid.Column="2" Margin="8,10,10,10" FontSize="15" Click="button_Copy_Click"  Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}" />
+        </Grid>
+
+
+    </Grid>
+</Window>

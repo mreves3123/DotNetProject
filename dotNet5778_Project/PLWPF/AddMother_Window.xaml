@@ -1,0 +1,213 @@
+﻿<Window x:Class="PLWPF.AddMother_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:BE="clr-namespace:BE;assembly=BE" 
+        mc:Ignorable="d"
+        Title="AddMother_Window" Height="600" Width="600">
+    <Window.Resources>
+        <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dayViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Day}, CreateList=True}"/>
+
+        <Style x:Key="controlStyle" TargetType="Control">
+
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+        <Style  TargetType="Label">
+
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+
+        <LinearGradientBrush x:Key="MyButtonBackground" EndPoint="0.504,1.5" StartPoint="0.504,0.03" >
+            <GradientStop Offset="0" Color="#FFE87AF9"/>
+            <GradientStop Color="#FFF9D1FF" Offset="0.567"/>
+        </LinearGradientBrush>
+
+    </Window.Resources>
+    <Grid  x:Name="OutGrid" Background="#FFE0BFE2" Margin="0,0,2,0" Width="auto" Height="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="480*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="336*"/>
+
+            <RowDefinition Height="136*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="Add New Mother"  
+			FontSize="25" Margin="190,-8,151,2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="248" Height="42"/>
+        <ScrollViewer Grid.Row="1" HorizontalAlignment="Center" Grid.ColumnSpan="2" Width="580" Margin="10,0,0,0" >
+            <Grid x:Name="MotherDetailsGrid" DataContext="{StaticResource motherViewSource}"  Height="auto" Width="auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="201*" />
+                    <ColumnDefinition Width="331*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10" Grid.Row="3" VerticalAlignment="Center" Height="29" Width="72"/>
+                <TextBox x:Name="addressTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,8,0,13" Grid.Row="3" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Address Around:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,4" Grid.Row="4" VerticalAlignment="Center" Height="29" Width="130"/>
+                <TextBox x:Name="addressAroundTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,13,0,8" Grid.Row="4" Text="{Binding AddressAround, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Count Of Child In Nanny:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10" Grid.Row="11" VerticalAlignment="Center" Height="29" Width="184"/>
+                <TextBox x:Name="countOfChildInNannyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,8,0,13" Grid.Row="11" Text="{Binding CountOfChildInNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Family:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,5" Grid.Row="2" VerticalAlignment="Bottom" Height="29" Width="55"/>
+                <TextBox x:Name="familyTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,12,0,6" Grid.Row="2" Text="{Binding Family, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10" Grid.Row="0" VerticalAlignment="Center" Height="29" Width="29"/>
+                <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,8,0,13" Grid.Row="0" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Is Bring Food:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,4" Grid.Row="9" VerticalAlignment="Center" Height="29" Width="104"/>
+                <CheckBox x:Name="isBringFoodCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding IsBringFood, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,18,0,11" Grid.Row="9" VerticalAlignment="Center" Height="14" Width="20"/>
+                <Label Content="Mobile Phone:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10" Grid.Row="6" VerticalAlignment="Center" Height="29" Width="109"/>
+                <TextBox x:Name="mobilePhoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,7,0,14" Grid.Row="6" Text="{Binding MobilePhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,4" Grid.Row="1" VerticalAlignment="Center" Height="29" Width="53"/>
+                <TextBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,13,0,8" Grid.Row="1" Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Note:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10" Grid.Row="10" VerticalAlignment="Center" Height="29" Width="49"/>
+                <TextBox x:Name="noteTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,7,0,14" Grid.Row="10" Text="{Binding Note, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Phone:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,4" Grid.Row="5" VerticalAlignment="Center" Height="29" Width="58"/>
+                <TextBox x:Name="phoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,14,0,7" Grid.Row="5" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Wanted Min Age:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,10" Grid.Row="7" VerticalAlignment="Center" Height="29" Width="130"/>
+                <TextBox x:Name="wantedMinAgeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,8,0,13" Grid.Row="7" Text="{Binding WantedMinAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Wanted Min Experience:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,10,0,4" Grid.Row="8" VerticalAlignment="Center" Height="29" Width="180"/>
+                <TextBox x:Name="wantedMinExperienceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,13,0,8" Grid.Row="8" Text="{Binding WantedMinExperience, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            </Grid>
+
+
+        </ScrollViewer>
+        <Grid x:Name="ButtonsGrid" HorizontalAlignment="Center"  Grid.Row="3" Margin="5,0" Width="579" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="96*"/>
+                <ColumnDefinition Width="51*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="addButton" Content="Add" 
+				FontSize="30" Margin="75,10,57,10" Grid.Column="1" Click="addButton_Click"  Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}" Width="152"/>
+
+            <Button x:Name="Return_button" Content="Return " Width="93" Height="auto" Margin="42,30,10,10" FontSize="15" Click="Return_button_Click"  Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}"/>
+            <Button x:Name="Main_button" Content="Main Menu" Width="109" Height="auto" Grid.Column="2" Margin="10,30,31,10" FontSize="15" Click="Main_button_Click"  Style="{StaticResource controlStyle}" Background="{StaticResource MyButtonBackground}"/>
+
+        </Grid>
+        <Expander x:Name="expander" HorizontalAlignment="Center" FontFamily="Kristen ITC" FontSize="15" Header="Enter need hours " Grid.Row="1" Width="590" Grid.ColumnSpan="2" Margin="5,331,-5,5" Grid.RowSpan="2"    >
+            <Grid Background="#FFE0BFE2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="sundayGrid" DataContext="{StaticResource dayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="130" Width="165" Grid.ColumnSpan="2" Margin="10,-10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="98*"/>
+                        <ColumnDefinition Width="67*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" MinHeight="42" />
+                        <RowDefinition Height="Auto" MinHeight="47" />
+                    </Grid.RowDefinitions>
+                    <Label Content="End Clock:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,12" Grid.Row="2" VerticalAlignment="Center" Height="28" Width="86"/>
+                    <TextBox x:Name="endClockTextBox" Grid.Column="1" Width="auto" Height="20" Margin="0,0,10,20" Grid.Row="2" IsEnabled="{Binding ElementName=ifWorkCheckBox, Path=IsChecked, Mode=OneWay}" VerticalAlignment="Bottom" />
+                    <Label Content="If need:" Grid.Column="0" HorizontalAlignment="Left" Margin="4,6,0,7" Grid.Row="0" VerticalAlignment="Center" Height="28" Width="67"/>
+                    <CheckBox x:Name="ifWorkCheckBox"  Grid.Column="1" HorizontalAlignment="Right"  Margin="0,0,0,3" Grid.Row="0" VerticalAlignment="Bottom" FontSize="10" Height="19" Width="63"  Content="sonday"/>
+                    <Label Content="Start Clock:" Grid.Column="0" HorizontalAlignment="Left" Margin="-1,9,0,5" Grid.Row="1" VerticalAlignment="Center" Height="28" Width="95"/>
+                    <TextBox x:Name="startClockTextBox" Grid.Column="1"    Grid.Row="1"  VerticalAlignment="Center" Width="auto" Height="17" Margin="1,15,10,10" IsEnabled="{Binding ElementName=ifWorkCheckBox, Path=IsChecked, Mode=OneWay}"/>
+                </Grid>
+                <Grid x:Name="FridayGrid" Grid.Column="5" DataContext="{StaticResource dayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Height="109">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="endClockTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="10,8,0,7" Grid.Row="2"  VerticalAlignment="Center" Width="58" IsEnabled="{Binding ElementName=ifWorkCheckBox1, Path=IsChecked, Mode=OneWay}"/>
+                    <CheckBox x:Name="ifWorkCheckBox1" FontSize="10" Content="friday" Grid.Column="1" HorizontalAlignment="Left" Margin="3,8,-8,8" Grid.Row="0" VerticalAlignment="Center" Click="ifWorkCheckBox1_Click" Width="74"/>
+                    <TextBox x:Name="startClockTextBox1" Grid.Column="1" HorizontalAlignment="Left" Height="19" Margin="10,10,0,7" Grid.Row="1"  VerticalAlignment="Center" Width="58" IsEnabled="{Binding ElementName=ifWorkCheckBox1, Path=IsChecked, Mode=OneWay}"/>
+                </Grid>
+                <Grid x:Name="TherthdayGrid" Grid.Column="4" DataContext="{StaticResource dayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Height="109">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="36"/>
+                        <RowDefinition Height="37*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="endClockTextBox2" HorizontalAlignment="Left" Height="22" Margin="10,8,0,7" Grid.Row="2" VerticalAlignment="Center" Width="58" IsEnabled="{Binding ElementName=ifWorkCheckBox2, Path=IsChecked, Mode=OneWay}"/>
+                    <CheckBox x:Name="ifWorkCheckBox2" Content="thurthday" FontSize="10"  HorizontalAlignment="Left"  Margin="3,8,-9,8" Grid.Row="0" VerticalAlignment="Center" Click="ifWorkCheckBox2_Click" Width="75"/>
+                    <TextBox x:Name="startClockTextBox2" HorizontalAlignment="Left" Height="20" Margin="10,10,0,6" Grid.Row="1"  VerticalAlignment="Center" Width="59" IsEnabled="{Binding ElementName=ifWorkCheckBox2, Path=IsChecked, Mode=OneWay}"/>
+                </Grid>
+                <Grid x:Name="WendsdayGrid" Grid.Column="3" DataContext="{StaticResource dayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Height="109">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="endClockTextBox3" HorizontalAlignment="Left" Height="22" Margin="5,8,0,7" Grid.Row="2" VerticalAlignment="Center" Width="63" IsEnabled="{Binding ElementName=ifWorkCheckBox3, Path=IsChecked, Mode=OneWay}"/>
+                    <CheckBox x:Name="ifWorkCheckBox3" FontSize="10" Content="wendsday" HorizontalAlignment="Left"  Margin="3,10,-8,10" Grid.Row="0" VerticalAlignment="Center"  Width="73"/>
+                    <TextBox x:Name="startClockTextBox3" HorizontalAlignment="Left" Height="20" Margin="5,10,0,6" Grid.Row="1"  VerticalAlignment="Center" Width="61" IsEnabled="{Binding ElementName=ifWorkCheckBox3, Path=IsChecked, Mode=OneWay}"/>
+                </Grid>
+                <Grid x:Name="TusdayGrid" Grid.Column="2" DataContext="{StaticResource dayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" Height="109">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="endClockTextBox4" HorizontalAlignment="Left" Height="19" Margin="10,8,0,10" Grid.Row="2"  VerticalAlignment="Center" Width="62" IsEnabled="{Binding ElementName=ifWorkCheckBox4, Path=IsChecked, Mode=OneWay}"/>
+                    <CheckBox x:Name="ifWorkCheckBox4" Content="tuesday" FontSize="10" HorizontalAlignment="Right"  Margin="0,10,0,11" Grid.Row="0" VerticalAlignment="Center"  Width="69"/>
+                    <TextBox x:Name="startClockTextBox4" HorizontalAlignment="Left" Height="18" Margin="12,10,0,8" Grid.Row="1"  VerticalAlignment="Center" Width="60" IsEnabled="{Binding ElementName=ifWorkCheckBox4, Path=IsChecked, Mode=OneWay}"/>
+                </Grid>
+                <Grid x:Name="MondayGrid" Grid.Column="1" DataContext="{StaticResource dayViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" Height="109">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="37*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="endClockTextBox5"  Height="17"  Grid.Row="2" VerticalAlignment="Center" Width="59" HorizontalAlignment="Left" Margin="10,10,-32,10" IsEnabled="{Binding ElementName=ifWorkCheckBox5, Path=IsChecked, Mode=OneWay}"/>
+                    <CheckBox x:Name="ifWorkCheckBox5" FontSize="10" Content="monday" HorizontalAlignment="Left"  Margin="3,8,-40,8" Grid.Row="0" VerticalAlignment="Center"  Width="74"/>
+                    <TextBox x:Name="startClockTextBox5" Grid.Row="1" Width="auto" Height="auto" Margin="10,8,-32,9" IsEnabled="{Binding ElementName=ifWorkCheckBox5, Path=IsChecked, Mode=OneWay}"/>
+                </Grid>
+            </Grid>
+        </Expander>
+
+
+
+
+
+    </Grid>
+</Window>
